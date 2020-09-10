@@ -21,3 +21,5 @@ const ONETIME = gql`
         }
     }
 `
+
+export {REGISTER, LOGOUT, ONETIME}
