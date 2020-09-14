@@ -19,13 +19,14 @@ const Button = styled.button`
     padding-top: 1rem;
     padding-bottom: 1rem;
 
-    width: 80%;
+    width: 100%;
     
     text-align: center;
 `
 
-export default ({onClick, children, ...rest}) => {
+export default (props) => {
+    const {children, ...restprops} = props
     return(
-        <Button onClick={onClick} {...rest}>{children}</Button>
+        <Button {...restprops}>{children}</Button>
     )
 }
