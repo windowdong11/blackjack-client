@@ -1,7 +1,9 @@
+import { ApolloProvider } from '@apollo/client';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import NavigationBar from './components/NavigationBar';
+import { client } from './httprequests';
 import links from './Links';
 import SignIn from './pages/Auth/SignIn';
 import SignUp from './pages/Auth/SignUp';
@@ -29,29 +31,31 @@ const ContentWrapper = styled.div`
 
 function App() {
   return (
-    <ContentWrapper>
-      <GlobalStyle />
-      <BrowserRouter>
-        <NavigationBar />
-        <Switch>
-          <Route exact path="/">
-            Home
+    <ApolloProvider client={client}>
+      <ContentWrapper>
+        <GlobalStyle />
+        <BrowserRouter>
+          <NavigationBar />
+          <Switch>
+            <Route exact path="/">
+              Home
             </Route>
-          <Route exact path={links.signin}>
-            <SignIn />
-          </Route>
-          <Route exact path={links.signup}>
-            <SignUp />
-          </Route>
-          <Route exact path={links.payment}>
-            Pay
+            <Route exact path={links.signin}>
+              <SignIn />
             </Route>
-          <Route>
-            Nomatch
+            <Route exact path={links.signup}>
+              <SignUp />
             </Route>
-        </Switch>
-      </BrowserRouter>
-    </ContentWrapper>
+            <Route exact path={links.payment}>
+              Pay
+            </Route>
+            <Route>
+              Nomatch
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </ContentWrapper>
+    </ApolloProvider>
   );
 }
 
