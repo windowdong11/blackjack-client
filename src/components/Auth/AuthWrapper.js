@@ -31,9 +31,10 @@ const ChildWrapper = styled.div`
 `
 
 
-export default ({ children, Title }) => {
+export default (props) => {
+    const {Title, children, ...rest} = props
     return (
-        <Wrapper>
+        <Wrapper {...rest}>
             <TitleWrapper>{Title}</TitleWrapper>
             <ChildWrapper>{children}</ChildWrapper>
         </Wrapper>
