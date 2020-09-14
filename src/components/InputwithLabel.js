@@ -39,11 +39,12 @@ const Input = styled.input`
 `
 
 export default props => {
-    const { onChange, value, label, ...extraProps } = props;
+    const { onChange, value, label, autoComplete, ...extraProps } = props;
     return (
         <Wrapper>
             <Input {...extraProps} onChange={onChange}
-                className={value ? 'focus-input' : ''}></Input>
+                className={value ? 'focus-input' : ''}
+                autoComplete={autoComplete ? 'on' : 'off'}></Input>
             <Label>{label}</Label>
         </Wrapper>
     )
