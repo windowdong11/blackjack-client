@@ -38,11 +38,12 @@ const Input = styled.input`
     }
 `
 
-export default ({label, ...rest}) => {
-    const [value, setValue] = useState('');
+export default props => {
+    const { onChange, value, label, ...extraProps } = props;
     return (
         <Wrapper>
-            <Input {...rest} onChange={e => setValue(e.target.value)} className={value ? 'focus-input' : ''}></Input>
+            <Input {...extraProps} onChange={onChange}
+                className={value ? 'focus-input' : ''}></Input>
             <Label>{label}</Label>
         </Wrapper>
     )
