@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 필요한 파일
+### .env.development.local
+> REACT_APP_SERVER=http://localhost:5252/graphql
+REACT_APP_CLIENT=localhost:3000
+### .env.production.local
+> REACT_APP_SERVER=서버주소
+REACT_APP_CLIENT=클라주소
+
+
 ## Available Scripts
 
 In the project directory, you can run:
