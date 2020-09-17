@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import NavigationBar from './components/NavigationBar';
 import { client } from './httprequests';
 import links from './Links';
+import Logout from './pages/Auth/Logout';
 import SignIn from './pages/Auth/SignIn';
 import SignUp from './pages/Auth/SignUp';
 
@@ -24,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
 `
 const ContentWrapper = styled.div`
   background-color: black;
+  color: white;
   width: 100%;
   height: 100%;
 `
@@ -45,6 +47,9 @@ function App() {
             </Route>
             <Route exact path={links.signup}>
               <SignUp />
+            </Route>
+            <Route exact path={links.logout}>
+              <Logout />
             </Route>
             <Route exact path={links.payment}>
               Pay

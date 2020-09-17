@@ -1,7 +1,7 @@
 const links = {
     signin: "/signin",
     signup: "/signup",
-    signout: "/signout",
+    logout: "/logout",
     payment: "/payment",
 }
 

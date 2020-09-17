@@ -38,7 +38,7 @@ export default ((props) => {
             <Title to="/">Blackjack</Title>
             <PageList>
                 <PageItem><PageItemLink to={links.signin}>Signin</PageItemLink></PageItem>
-                <PageItem><PageItemLink to={links.signout}>SignOut</PageItemLink></PageItem>
+                <PageItem><PageItemLink to={links.logout}>SignOut</PageItemLink></PageItem>
                 <PageItem><PageItemLink to={links.signup}>SignUp</PageItemLink></PageItem>
             </PageList>
         </Nav>
