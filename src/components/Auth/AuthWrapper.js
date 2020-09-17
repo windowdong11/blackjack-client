@@ -6,10 +6,12 @@ const Wrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
+    width: 60%;
+    min-width: 200px;
+    max-width: 600px;
     background: linear-gradient(#5C6BC0,#EC407A);
     border-radius: 20px;
-    overflow:hidden;
+    display: block;
 `
 
 const TitleWrapper = styled.div`

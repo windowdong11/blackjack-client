@@ -30,6 +30,11 @@ const ContentWrapper = styled.div`
   height: 100%;
 `
 
+const Body = styled.div`
+  height: calc(100% - 69px); /*100% - navigation bar height */
+  width: 100%;
+`
+
 
 function App() {
   return (
@@ -38,26 +43,28 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <NavigationBar />
-          <Switch>
-            <Route exact path="/">
-              Home
+          <Body>
+            <Switch>
+              <Route exact path="/">
+                Home
             </Route>
-            <Route exact path={links.signin}>
-              <SignIn />
+              <Route exact path={links.signin}>
+                <SignIn />
+              </Route>
+              <Route exact path={links.signup}>
+                <SignUp />
+              </Route>
+              <Route exact path={links.logout}>
+                <Logout />
+              </Route>
+              <Route exact path={links.payment}>
+                Pay
             </Route>
-            <Route exact path={links.signup}>
-              <SignUp />
+              <Route>
+                Nomatch
             </Route>
-            <Route exact path={links.logout}>
-              <Logout />
-            </Route>
-            <Route exact path={links.payment}>
-              Pay
-            </Route>
-            <Route>
-              Nomatch
-            </Route>
-          </Switch>
+            </Switch>
+          </Body>
         </BrowserRouter>
       </ContentWrapper>
     </ApolloProvider>
