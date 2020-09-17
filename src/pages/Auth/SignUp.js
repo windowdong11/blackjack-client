@@ -16,10 +16,11 @@ export default function SignUp(props) {
     const [pw, setPw] = useState('')
 
 
-    const [register, { data }] = useMutation(REGISTER)
+    const [register] = useMutation(REGISTER)
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log()
         register({ variables: { id: id, pw: pw } })
             .then(result => {
                 const responseCode = result.data.register.code
