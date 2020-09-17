@@ -1,16 +1,8 @@
 import React, { useState } from 'react'
-import AuthButton from '../../components/Auth/AuthButton'
-import AuthWrapper from '../../components/Auth/AuthWrapper'
-import InputwithLabel from '../../components/InputwithLabel'
-import styled from 'styled-components'
 import { LOGIN } from '../../httprequests/query'
 import { setCookie } from '../../components/cookie/Cookie'
 import { client } from '../../httprequests'
-
-const Form = styled.form`
-    width: 60%;
-    max-width: 400px;
-`
+import AuthForm from '../../components/Auth/AuthForm'
 
 export default props => {
     const [id, setId] = useState('')
@@ -39,14 +31,10 @@ export default props => {
     }
 
     return (
-        <AuthWrapper Title="Sign In">
-            <Form onSubmit={handleSubmit}>
-                <InputwithLabel name="id" label="ID"
-                    onChange={e => setId(e.target.value)} value={id} />
-                <InputwithLabel name="pw" label="PW"
-                    onChange={e => setPw(e.target.value)} value={pw} />
-                <AuthButton type="submit">Sign In</AuthButton>
-            </Form>
-        </AuthWrapper>
+        <AuthForm Title="Sign In" submitText="Sign In"
+            id={id} setId={e => setId(e.target.value)}
+            pw={pw} setPw={e => setPw(e.target.value)}
+            handleSubmit={handleSubmit}
+        ></AuthForm>
     )
 }

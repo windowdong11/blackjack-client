@@ -1,15 +1,7 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
-import AuthButton from '../../components/Auth/AuthButton'
-import AuthWrapper from '../../components/Auth/AuthWrapper'
-import InputwithLabel from '../../components/InputwithLabel'
 import { REGISTER } from '../../httprequests/mutation'
-import styled from 'styled-components'
-
-const Form = styled.form`
-    width: 60%;
-    max-width: 400px;
-`
+import AuthForm from '../../components/Auth/AuthForm'
 
 export default function SignUp(props) {
     const [id, setId] = useState('')
@@ -48,14 +40,10 @@ export default function SignUp(props) {
     }
 
     return (
-        <AuthWrapper Title="Sign Up">
-            <Form onSubmit={handleSubmit}>
-                <InputwithLabel name="id" label="ID"
-                    onChange={e => setId(e.target.value)} value={id} />
-                <InputwithLabel name="pw" label="PW"
-                    onChange={e => setPw(e.target.value)} value={pw} />
-                <AuthButton type="submit">Sign Up</AuthButton>
-            </Form>
-        </AuthWrapper>
+        <AuthForm Title="Sign Up" submitText="Sign Up"
+            id={id} setId={e => setId(e.target.value)}
+            pw={pw} setPw={e => setPw(e.target.value)}
+            handleSubmit={handleSubmit}
+        ></AuthForm>
     )
 }
