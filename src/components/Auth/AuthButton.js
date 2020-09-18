@@ -6,6 +6,7 @@ const Button = styled.button`
     border: none;
     outline: none;
 
+    color: rgb(0 0 0 / 0.6);
     line-height: 2.5rem;
     font-size: 1.2rem;
 
@@ -22,6 +23,12 @@ const Button = styled.button`
     width: 100%;
     
     text-align: center;
+
+    :hover{
+        cursor: pointer;
+        background: linear-gradient(to right,hsl(291 64% 34% / 0.47),hsl(262 52% 55% / 0.94));
+        color: rgb(0 0 0 / 1);
+    }
 `
 
 export default (props) => {

@@ -11,6 +11,7 @@ const Wrapper = styled.div`
 const Label = styled.label`
     position: absolute;
     top: 1.6rem;
+    color: rgb(255 255 255 / 0.6)
 `
 
 const Input = styled.input`
