@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import links from '../Links'
+import Links from '../Links'
+import { getCookie } from './cookie/Cookie'
 
 
 const Nav = styled.nav`
@@ -37,11 +38,17 @@ export default ((props) => {
     return (
         <Nav>
             <Title to="/">Blackjack</Title>
-            <PageList>
-                <PageItem><PageItemLink to={links.signin}>Signin</PageItemLink></PageItem>
-                <PageItem><PageItemLink to={links.logout}>SignOut</PageItemLink></PageItem>
-                <PageItem><PageItemLink to={links.signup}>SignUp</PageItemLink></PageItem>
-            </PageList>
+            {
+                getCookie('token') == '' ?
+                    <PageList>
+                        <PageItem><PageItemLink to={Links.signin}>Signin</PageItemLink></PageItem>
+                        <PageItem><PageItemLink to={Links.signup}>SignUp</PageItemLink></PageItem>
+                    </PageList>
+                    :
+                    <PageList>
+                        <PageItem><PageItemLink to={Links.logout}>SignOut</PageItemLink></PageItem>
+                    </PageList>
+            }
         </Nav>
     )
 })
