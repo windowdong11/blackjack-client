@@ -8,6 +8,7 @@ import links from './Links';
 import Logout from './pages/Auth/Logout';
 import SignIn from './pages/Auth/SignIn';
 import SignUp from './pages/Auth/SignUp';
+import AuthRoute from './routers/AuthRoute';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -54,15 +55,15 @@ function App() {
               <Route exact path={links.signup}>
                 <SignUp />
               </Route>
-              <Route exact path={links.logout}>
+              <AuthRoute exact path={links.logout}>
                 <Logout />
-              </Route>
+              </AuthRoute>
               <Route exact path={links.payment}>
                 Pay
-            </Route>
+              </Route>
               <Route>
                 Nomatch
-            </Route>
+              </Route>
             </Switch>
           </Body>
         </BrowserRouter>
