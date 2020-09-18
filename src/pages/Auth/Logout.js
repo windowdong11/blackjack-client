@@ -10,7 +10,6 @@ export default () => {
     if(loading) return 'Loading...';
     if(error) return `Error! ${error.message}`
     removeCookie('token')
-    return(
-        <Redirect to="/"></Redirect>
-    )
+    window.location="/"
+    return null
 }
