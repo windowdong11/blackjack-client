@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import Chat from './pages/Chat'
+import Chat from './pages/chat/Chat'
 import client from './gql/Client';
 import { ApolloProvider } from '@apollo/client';
 import Login from './pages/auth/Login';
