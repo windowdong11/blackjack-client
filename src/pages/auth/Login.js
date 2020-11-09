@@ -16,7 +16,9 @@ export default function Login() {
 
     useEffect(() => {
         if(loginResult.data?.login.token){
-            localStorage.setItem('token', loginResult.data.token)
+            console.log(loginResult)
+            localStorage.setItem('token', loginResult.data.login.token)
+            window.location = '/'
         }
     }, [loginResult.data])
     const onLoginButton = () => {
