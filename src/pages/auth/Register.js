@@ -22,7 +22,7 @@ export default function Register() {
         }
     }, [registerResult])
 
-    const clickRegisterButton = () => {
+    const onSubmit = () => {
         register({ variables: { name, id, pw } })
         setName("")
         setId("")
@@ -30,7 +30,7 @@ export default function Register() {
     }
 
     return (
-        <div>
+        <form onSubmit={onSubmit}>
             <h4>Register</h4>
             <div>
 
@@ -39,22 +39,25 @@ export default function Register() {
                     onChange={e => setName(e.target.value)}
                     type='text'
                     placeholder='name'
+                    required
                 />
                 <input
                     value={id}
                     onChange={e => setId(e.target.value)}
                     type='text'
                     placeholder='id'
+                    required
                 />
                 <input
                     value={pw}
                     onChange={e => setPw(e.target.value)}
                     type='password'
                     placeholder='pw'
+                    required
                 />
                 <br />
             </div>
-            <button onClick={clickRegisterButton}>회원가입</button>
-        </div>
+            <button type="submit">회원가입</button>
+        </form>
     )
 }

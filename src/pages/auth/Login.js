@@ -21,7 +21,7 @@ export default function Login() {
             window.location = '/'
         }
     }, [loginResult.data])
-    const onLoginButton = () => {
+    const onSubmit = () => {
         login({variables: { id, pw }})
         setId("")
         setPw("")
@@ -37,23 +37,25 @@ export default function Login() {
     }
 
     return (
-        <div>
-            <h4>{login ? 'Login' : 'Sign Up'}</h4>
+        <form onSubmit={onSubmit}>
+            <h4>Login</h4>
             <div>
                 <input 
                     value={id}
                     onChange={e => setId(e.target.value)}
                     type="text"
                     placeholder="Your email address"
+                    required
                 />
                 <input
                     value={pw}
                     onChange={e => setPw(e.target.value)}
                     type="password"
                     placeholder="Password"
+                    required
                 />
             </div>
-            <button onClick={onLoginButton}>Login</button>
-        </div>
+            <button type="submit">Login</button>
+        </form>
     )
 }
