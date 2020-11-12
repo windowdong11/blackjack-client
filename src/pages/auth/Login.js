@@ -1,5 +1,7 @@
 import { gql, useLazyQuery } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
+import { useAuth } from './Auth'
 
 const LOGIN = gql`
     query Login($id: String!, $pw: String!) {
@@ -10,18 +12,25 @@ const LOGIN = gql`
 `
 
 export default function Login() {
+    console.log("login")
     const [id, setId] = useState('')
     const [pw, setPw] = useState('')
     const [login, loginResult] = useLazyQuery(LOGIN)
+    const auth = useAuth()
+    const history = useHistory()
+    const location = useLocation()
+    const { from } = location.state || { from: { pathname: "/" } }
 
     useEffect(() => {
         if(loginResult.data?.login.token){
-            console.log(loginResult)
             localStorage.setItem('token', loginResult.data.login.token)
-            window.location = '/'
+            auth.login()
+            history.replace(from)
         }
     }, [loginResult.data])
-    const onSubmit = () => {
+
+    const onSubmit = e => {
+        e.preventDefault()
         login({variables: { id, pw }})
         setId("")
         setPw("")
