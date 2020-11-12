@@ -6,25 +6,30 @@ import client from './gql/Client';
 import { ApolloProvider } from '@apollo/client';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import { ProvideAuth } from './pages/auth/Auth';
+import PrivateRoute from './router/PrivateRoute';
+import NonePrivateRoute from './router/NonePrivateRoute'
+import PrivateLink from './link/PrivateLink';
+import NonePrivateLink from './link/NonePrivateLink';
+import LogoutButton from './components/LogoutButton';
 
 function App() {
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter>
-        <Link to='/'>Home</Link>
-        <br />
-        <Link to='/chat'>Chat</Link>
-        <br />
-        <Link to='/login'>Login</Link>
-        <br />
-        <Link to='/register'>Register</Link>
-        <br />
+      <ProvideAuth>
+        <BrowserRouter>
+          <Link to='/'>Home</Link>
+          <PrivateLink to='/chat'>Chat</PrivateLink>
+          <NonePrivateLink to='/login'>Login</NonePrivateLink>
+          <NonePrivateLink to='/register'>Register</NonePrivateLink>
+          <LogoutButton>Logout</LogoutButton>
 
-        <Route exact path='/' component={Home}></Route>
-        <Route path='/chat' component={Chat}></Route>
-        <Route path='/login' component={Login}></Route>
-        <Route path='/register' component={Register}></Route>
-      </BrowserRouter>
+          <Route exact path='/'><Home></Home></Route>
+          <PrivateRoute path='/chat'><Chat/></PrivateRoute>
+          <NonePrivateRoute path='/login'><Login></Login></NonePrivateRoute>
+          <NonePrivateRoute path='/register'><Register></Register></NonePrivateRoute>
+        </BrowserRouter>
+      </ProvideAuth>
     </ApolloProvider>
   );
 }
