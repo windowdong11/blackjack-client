@@ -33,7 +33,6 @@ export default function Register() {
         <form onSubmit={onSubmit}>
             <h4>Register</h4>
             <div>
-
                 <input
                     value={name}
                     onChange={e => setName(e.target.value)}
@@ -41,6 +40,7 @@ export default function Register() {
                     placeholder='name'
                     required
                 />
+                <br/>
                 <input
                     value={id}
                     onChange={e => setId(e.target.value)}
