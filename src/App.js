@@ -16,14 +16,10 @@ import styled from 'styled-components'
 
 import playingCats_1920 from './images/playingcats_1920.png'
 import playingDesk_1920 from './images/playingdesk_1920.jpg'
-import cards_1280 from './images/cards_1280.png'
 import cards_svg from './images/cards.svg'
+import FitImg from './components/FitImg';
 
 
-const FitImg = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-`
 // ------------------------ Navigation Bar ---------------------------
 
 const NavBar = styled.div`
@@ -97,29 +93,16 @@ const BodyWrapper = styled.div`
   justify-content: space-between;
 `
 
-const MainImg = styled(FitImg)`
-  display: block;
 
-  max-width: 55%;
-
-  margin-right: auto;
-  margin-left:auto;
-`
 
 const ContentWrapper = styled.div`
   display: flex;
 
-  justify-content: center;
+  flex-direction: column;
+  
   align-items: center;
 
   width: 100%;
-  
-  padding-bottom: 2em;
-
-  background-color: #0b090c;
-  color : rgb(177 127 144);
-  font-size: large;
-  font-weight: bold;
 `
 
 // -------------------- Footer -------------------
@@ -161,7 +144,6 @@ function App() {
           </NavBar>
 
           <BodyWrapper>
-            <MainImg src={cards_1280}></MainImg>
             <ContentWrapper>
               <Route exact path='/'><Home></Home></Route>
               <PrivateRoute path='/chat'><Chat /></PrivateRoute>
@@ -171,7 +153,7 @@ function App() {
           </BodyWrapper>
 
           <FootWrapper>
-            BlackJack App
+            BlackJack App - SungWon, DongGyu
           </FootWrapper>
         </BrowserRouter>
       </ProvideAuth>

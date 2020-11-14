@@ -4,6 +4,10 @@ html, body, div, ul{
     padding: 0;
 }
 
+body {
+    overflow-y: scroll;
+}
+
 a{
     color: black;
     text-decoration: none;
