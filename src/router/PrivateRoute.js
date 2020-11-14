@@ -8,10 +8,13 @@ export default function PrivateRoute({ children, ...rest }) {
   return (
     <Route
       {...rest}
-      render={() =>
-        auth.user
-          ? children
-          : <Redirect to='/login' />
+      render={() =>{
+        if (auth.user){
+          return children
+        }
+        alert('먼저 로그인이 필요한 기능입니다.')
+        return <Redirect to='/login'/>
+      }
       }
     />
   );
