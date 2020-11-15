@@ -1,5 +1,7 @@
 import { gql, useSubscription } from '@apollo/client'
 import React, { useState } from 'react'
+import styled from 'styled-components'
+import SendChat from './SendChat'
 
 const LISTEN_CHAT = gql`
 subscription newChat {
@@ -9,6 +11,18 @@ subscription newChat {
     }
 }
 `
+
+const ChatLog = styled.div`
+    max-width: 100%;
+    max-height: 100%;
+
+    overflow: scroll;
+
+    ul {
+        list-style: none;
+    }
+`
+
 
 export default function ChatList(){
     const [chatList, setChatList] = useState([])
@@ -29,7 +43,6 @@ export default function ChatList(){
     }
 
     return (
-        <div>
             <ul>
                 {
                     chatList.map(chat => {
@@ -37,6 +50,5 @@ export default function ChatList(){
                     })
                 }
             </ul>
-        </div>
     )
 }

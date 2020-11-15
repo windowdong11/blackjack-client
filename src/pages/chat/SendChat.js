@@ -1,5 +1,28 @@
 import { gql, useMutation } from '@apollo/client'
 import React, { useState } from 'react'
+import styled from 'styled-components'
+
+const StyledForm = styled.form`
+    display: flex;
+    justify-content: space-between;
+`
+
+const StyledInput = styled.input`
+    width: 80%;
+    height: 1em;
+    padding: 0.2em;
+    border: solid black 3px;
+
+    font-size: medium;
+    font-weight: bold;
+`
+
+const StyledButton = styled.button`
+    background-color: black;
+    color: pink;
+    width: 15%;
+`
+
 
 const CHAT = gql`
 mutation chat($chatContent: String) {
@@ -39,11 +62,10 @@ export default function SendChat() {
     }
 
     return (
-        <form onSubmit={onSend}>
-            <p>Text</p>
-            <input onChange={e => setText(e.target.value)} value={text} required></input>
-            <button type="submit">전송</button>
-        </form>
+        <StyledForm onSubmit={onSend}>
+            <StyledInput onChange={e => setText(e.target.value)} value={text} required></StyledInput>
+            <StyledButton type="submit">전송</StyledButton>
+        </StyledForm>
     )
 }
 

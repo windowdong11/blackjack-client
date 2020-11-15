@@ -22,7 +22,7 @@ export const useAuth = () => {
 };
 
 function useProvideAuth() {
-    const [user, setUser] = useState(false)
+    const [user, setUser] = useState(localStorage.getItem('token') ? true : false)
     const login = (/*id, pw*/) => {
         // id, pw를 이용한 로그인, 리턴값 반환
         console.log("login")

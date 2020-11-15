@@ -83,9 +83,10 @@ const BodyWrapper = styled.div`
   /* background-color: rgba(158, 159, 214, 1); */
   padding: 0;
   padding-top: 1em;
+  padding-bottom: 2em;
   margin-top: 4em;
 
-  min-height: calc(100vh - 9em);/* 100% - 헤더 높이 - 푸터 높이 */
+  min-height: calc(100vh - 11em);/* 100% - 헤더 높이 - 푸터 높이 - 마진 */
 
   display: flex;
   flex-direction: column;
@@ -103,6 +104,8 @@ const ContentWrapper = styled.div`
   align-items: center;
 
   width: 100%;
+
+  min-height: inherit;
 `
 
 // -------------------- Footer -------------------
@@ -144,12 +147,10 @@ function App() {
           </NavBar>
 
           <BodyWrapper>
-            <ContentWrapper>
-              <Route exact path='/'><Home></Home></Route>
-              <PrivateRoute path='/chat'><Chat /></PrivateRoute>
-              <NonePrivateRoute path='/login'><Login></Login></NonePrivateRoute>
-              <NonePrivateRoute path='/register'><Register></Register></NonePrivateRoute>
-            </ContentWrapper>
+            <Route exact path='/'><Home></Home></Route>
+            <PrivateRoute path='/chat'><Chat /></PrivateRoute>
+            <NonePrivateRoute path='/login'><Login></Login></NonePrivateRoute>
+            <NonePrivateRoute path='/register'><Register></Register></NonePrivateRoute>
           </BodyWrapper>
 
           <FootWrapper>
