@@ -22,12 +22,32 @@ const ChatListWrapper = styled.div`
     padding: 10px;
 
     width: calc(100% - 20px);
-    height: 100%;
+    height: 300px;
     min-width: 180px;
     min-height: 280px;
     max-height: 300px;
-
     overflow: scroll;
+    /* width */
+    ::-webkit-scrollbar {
+    width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: transparent;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        border-radius:5px;
+        background: black;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    }
+
 `
 
 const SendChatWrapper = styled.div`
