@@ -18,14 +18,12 @@ export default function Login() {
     const [login, loginResult] = useLazyQuery(LOGIN)
     const auth = useAuth()
     const history = useHistory()
-    const location = useLocation()
-    const { from } = location.state || { from: { pathname: "/" } }
 
     useEffect(() => {
         if(loginResult.data?.login.token){
             localStorage.setItem('token', loginResult.data.login.token)
             auth.login()
-            history.replace(from)
+            history.replace('/')
         }
     }, [loginResult.data])
 
