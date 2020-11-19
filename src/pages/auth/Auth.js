@@ -1,6 +1,12 @@
-import React, { createContext, useContext, useState } from 'react'
+import { gql, useMutation } from '@apollo/client';
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
 
-export const isLogined = () => localStorage.getItem('token') ? true : false
+const LOGOUT = gql`
+mutation LogoutMutation {
+    logout
+}
+`
 
 const authContext = createContext();
 
@@ -9,9 +15,9 @@ const authContext = createContext();
 export function ProvideAuth({ children }) {
     const auth = useProvideAuth();
     return (
-    <authContext.Provider value={auth}>
-        {children}
-    </authContext.Provider>
+        <authContext.Provider value={auth}>
+            {children}
+        </authContext.Provider>
     )
 }
 
@@ -23,9 +29,9 @@ export const useAuth = () => {
 
 function useProvideAuth() {
     const [user, setUser] = useState(localStorage.getItem('token') ? true : false)
+    const [logoutMutation, logoutResult] = useMutation(LOGOUT)
     const login = (/*id, pw*/) => {
         // id, pw를 이용한 로그인, 리턴값 반환
-        console.log("login")
         setUser(true)
     }
 
@@ -35,10 +41,21 @@ function useProvideAuth() {
 
     const logout = () => {
         // 로그아웃, 리턴값 반환
-        localStorage.removeItem('token')
-        console.log("logout")
-        setUser(false)
+        logoutMutation()
+        return logoutResult || {
+            called : logoutResult.called,
+            client : logoutResult.client,
+            data : logoutResult.data,
+            error : logoutResult.error,
+            loading : logoutResult.loading
+        }
     };
+    useEffect(() => {
+        if (logoutResult.data?.logout) {
+            localStorage.removeItem('token')
+            setUser(false)
+        }
+    }, [logoutResult.data])
 
     // Subscribe to user on mount
     // Because this sets state in the callback it will cause any ...

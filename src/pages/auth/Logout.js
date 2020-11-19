@@ -10,23 +10,35 @@ mutation LogoutMutation {
 `
 
 export default function Logout() {
-    const [logout, logoutResult] = useMutation(LOGOUT)
-    const auth = useAuth()
-    const history = useHistory()
+    // const [logout, logoutResult] = useMutation(LOGOUT)
+    // const auth = useAuth()
+    // const history = useHistory()
     
-    useEffect(() =>{
-        if (logoutResult.data?.logout){
-            auth.logout()
-            history.replace('/')
-        }
-    }, [logoutResult])
+    // useEffect(() =>{
+    //     if (logoutResult.data?.logout){
+    //         auth.logout()
+    //         history.replace('/')
+    //     }
+    // }, [logoutResult])
 
-    logout()
-    console.log(logoutResult)
+    // logout()
+    // console.log(logoutResult)
 
-    if(logoutResult.loading)
-        return <div>Loading...</div>
-    if(logoutResult.error)
-        return <p>Error</p>
-    return <p>Redirecting..</p>
+    // if(logoutResult.loading)
+    //     return <div>Loading...</div>
+    // if(logoutResult.error)
+    //     return <p>Error</p>
+    // return <p>Redirecting..</p>
+    const auth = useAuth()
+    const logoutResult = auth.logout()
+    const history = useHistory()
+    history.replace('/')
+    
+    if (logoutResult.loading){
+        return <p>loading</p>
+    }
+    if (logoutResult.error){
+        return <p>error</p>
+    }
+    return <p>wait..</p>
 }
