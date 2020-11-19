@@ -18,6 +18,7 @@ import playingCats_1920 from './images/playingcats_1920.png'
 import playingDesk_1920 from './images/playingdesk_1920.jpg'
 import cards_svg from './images/cards.svg'
 import FitImg from './components/FitImg';
+import Logout from './pages/auth/Logout';
 
 
 // ------------------------ Navigation Bar ---------------------------
@@ -142,15 +143,17 @@ function App() {
             <NavAuth>
               <NonePrivateLink to='/login'>Login</NonePrivateLink>
               <NonePrivateLink to='/register'>Register</NonePrivateLink>
-              <LogoutButton>Logout</LogoutButton>
+              <PrivateLink to='/logout'>Logout</PrivateLink>
             </NavAuth>
           </NavBar>
 
           <BodyWrapper>
             <Route exact path='/'><Home></Home></Route>
             <PrivateRoute path='/chat'><Chat /></PrivateRoute>
+
             <NonePrivateRoute path='/login'><Login></Login></NonePrivateRoute>
             <NonePrivateRoute path='/register'><Register></Register></NonePrivateRoute>
+            <PrivateRoute path='/logout'><Logout></Logout></PrivateRoute>
           </BodyWrapper>
 
           <FootWrapper>
